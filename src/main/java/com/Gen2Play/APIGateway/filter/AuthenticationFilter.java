@@ -40,11 +40,15 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             System.out.println("🔍 [AuthenticationFilter] Incoming request: " + path);
 
             // ✅ Bỏ qua filter nếu request thuộc API authentication
-            if (path.startsWith("/api/auth/")) {
+            if (path.startsWith("/api/auth/") || path.startsWith("/api/auth/")
+                    || path.startsWith("/swagger-ui")
+                    || path.startsWith("/v3/api-docs")
+                    || path.startsWith("/swagger-resources")
+                    || path.startsWith("/webjars")) {
                 System.out.println("✅ [AuthenticationFilter] Skipping authentication for: " + path);
                 return chain.filter(exchange);
             }
-
+            
             String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
 
             // ❌ Nếu không có header Authorization hoặc sai định dạng
