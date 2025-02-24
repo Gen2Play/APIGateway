@@ -40,7 +40,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             System.out.println("🔍 [AuthenticationFilter] Incoming request: " + path);
 
             // ✅ Bỏ qua filter nếu request thuộc API authentication
-            if (path.startsWith("/api/auth/") || path.startsWith("/api/auth/")
+            if (path.startsWith("/api/auth/") || path.startsWith("/swagger")
                     || path.startsWith("/swagger-ui")
                     || path.startsWith("/v3/api-docs")
                     || path.startsWith("/swagger-resources")
